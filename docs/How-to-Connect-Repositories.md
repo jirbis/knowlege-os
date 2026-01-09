@@ -11,7 +11,7 @@ Practical guide for setting up directory structure and connecting repositories i
 **Simplest structure** — everything in one repository:
 
 ```
-~/Documents/GitHub/knowlege-os/
+~/Documents/GitHub/knowledge-os/
 ├── knowledge/          # Semantic layer
 │   ├── blocks/
 │   ├── candidates/
@@ -44,7 +44,7 @@ knowledge:
 
 ```
 ~/Documents/GitHub/
-├── knowlege-os/              # Main system (public/private)
+├── knowledge-os/              # Main system (public/private)
 │   ├── AGENTS/
 │   ├── tools/
 │   ├── output/
@@ -78,16 +78,16 @@ cd knowledge-base
 git init
 
 # Initialize knowledge-base repository
-python3 ../knowlege-os/tools/init_repository.py knowledge-base .
+python3 ../knowledge-os/tools/init_repository.py knowledge-base .
 
 # Return to main repository
-cd ../knowlege-os
+cd ../knowledge-os
 ```
 
 #### Step 2: Configure connection
 
 ```bash
-# In knowlege-os directory, set up dual-repo
+# In knowledge-os directory, set up dual-repo
 python3 tools/setup_dual_repo.py --knowledge-path ../knowledge-base/knowledge
 ```
 
@@ -102,10 +102,10 @@ knowledge:
 
 #### Step 3: Move knowledge/ (if needed)
 
-If you already have `knowledge/` in `knowlege-os`, you can move it:
+If you already have `knowledge/` in `knowledge-os`, you can move it:
 
 ```bash
-# In knowlege-os directory
+# In knowledge-os directory
 # Option A: Copy contents
 cp -r knowledge/* ../knowledge-base/knowledge/
 
@@ -130,7 +130,7 @@ ls ../knowledge-base/knowledge/blocks/
 **Git submodule** — for versioned dependencies:
 
 ```
-~/Documents/GitHub/knowlege-os/
+~/Documents/GitHub/knowledge-os/
 ├── AGENTS/
 ├── tools/
 ├── output/
@@ -153,7 +153,7 @@ ls ../knowledge-base/knowledge/blocks/
 cd ~/Documents/GitHub/
 mkdir knowledge-base && cd knowledge-base
 git init
-python3 ../knowlege-os/tools/init_repository.py knowledge-base .
+python3 ../knowledge-os/tools/init_repository.py knowledge-base .
 git add .
 git commit -m "Initial knowledge-base repository"
 
@@ -165,7 +165,7 @@ git push -u origin main
 #### Step 2: Add as submodule
 
 ```bash
-cd ~/Documents/GitHub/knowlege-os
+cd ~/Documents/GitHub/knowledge-os
 
 # Add submodule
 python3 tools/setup_dual_repo.py \
@@ -197,7 +197,7 @@ If you want complete structure with 3-5 repositories:
 
 ```
 ~/Documents/GitHub/
-├── knowlege-os/              # Main system
+├── knowledge-os/              # Main system
 │   ├── AGENTS/
 │   ├── tools/
 │   ├── output/
@@ -227,22 +227,22 @@ If you want complete structure with 3-5 repositories:
 cd ~/Documents/GitHub/
 
 # 1. Main system (already exists)
-# cd knowlege-os
+# cd knowledge-os
 
 # 2. Knowledge base
 mkdir knowledge-base && cd knowledge-base
 git init
-python3 ../knowlege-os/tools/init_repository.py knowledge-base .
+python3 ../knowledge-os/tools/init_repository.py knowledge-base .
 cd ..
 
 # 3. Chat archive
 mkdir knowledge-chat-archive && cd knowledge-chat-archive
 git init
-python3 ../knowlege-os/tools/init_repository.py chat-archive .
+python3 ../knowledge-os/tools/init_repository.py chat-archive .
 cd ..
 
 # 4. Configure connections in main repository
-cd knowlege-os
+cd knowledge-os
 python3 tools/setup_dual_repo.py --knowledge-path ../knowledge-base/knowledge
 
 # 5. Update config.yaml for chat archive
@@ -332,7 +332,7 @@ print('Architecture:', config['architecture'])
 
 ## Common Scenarios
 
-### Scenario 1: I already have knowlege-os with knowledge/
+### Scenario 1: I already have knowledge-os with knowledge/
 
 **Migrating to dual-repo:**
 
@@ -342,17 +342,17 @@ cd ~/Documents/GitHub/
 # 1. Create knowledge-base separately
 mkdir knowledge-base && cd knowledge-base
 git init
-python3 ../knowlege-os/tools/init_repository.py knowledge-base .
+python3 ../knowledge-os/tools/init_repository.py knowledge-base .
 
 # 2. Copy knowledge/ contents
-cp -r ../knowlege-os/knowledge/* ./knowledge/
+cp -r ../knowledge-os/knowledge/* ./knowledge/
 
 # 3. Commit
 git add .
 git commit -m "Initial knowledge-base from monorepo"
 
 # 4. Configure connection in main repository
-cd ../knowlege-os
+cd ../knowledge-os
 python3 tools/setup_dual_repo.py --knowledge-path ../knowledge-base/knowledge
 
 # 5. (Optional) Remove knowledge/ from main repository
@@ -366,17 +366,17 @@ python3 tools/setup_dual_repo.py --knowledge-path ../knowledge-base/knowledge
 cd ~/Documents/GitHub/
 
 # 1. Main system
-git clone <your-knowlege-os-repo> knowlege-os
-cd knowlege-os
+git clone <your-knowledge-os-repo> knowledge-os
+cd knowledge-os
 
 # 2. Create knowledge-base next to it
 cd ..
 mkdir knowledge-base && cd knowledge-base
 git init
-python3 ../knowlege-os/tools/init_repository.py knowledge-base .
+python3 ../knowledge-os/tools/init_repository.py knowledge-base .
 
 # 3. Configure connection
-cd ../knowlege-os
+cd ../knowledge-os
 python3 tools/setup_dual_repo.py --knowledge-path ../knowledge-base/knowledge
 ```
 
