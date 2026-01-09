@@ -1,0 +1,35 @@
+# Monorepo Configuration Template
+# Architecture: Single repository with strict directory boundaries
+# All components live in one repo but with enforced separation
+
+architecture: "monorepo"
+
+knowledge:
+  # Internal path within the same repository
+  root_path: "./knowledge"
+  
+  integration: "internal"
+  read_only: false  # Internal, but still validate boundaries
+  enforce_read_only: true  # Still enforce via validation
+
+chat_archive:
+  root_path: "./archive"
+  integration: "internal"
+  read_only: true
+
+pipeline:
+  config_path: "./knowledge/pipelines/pipeline.yaml"
+  output_dir: "./output"
+  enforce_boundaries: true
+
+boundaries:
+  protected_paths:
+    - "./knowledge/blocks"
+    - "./knowledge/candidates"
+    - "./knowledge/INVARIANTS.md"
+    - "./knowledge/DECISIONS.md"
+    - "./knowledge/MAP.md"
+  allowed_output_paths:
+    - "./output"
+    - "./drafts"
+  validate_before_assembly: true

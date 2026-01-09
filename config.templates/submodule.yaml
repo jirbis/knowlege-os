@@ -1,0 +1,37 @@
+# Submodule Configuration Template
+# Architecture: Git submodule integration
+# - knowledge-base added as submodule inside knowledge-os
+
+architecture: "submodule"
+
+knowledge:
+  # Submodule path relative to repository root
+  root_path: "./knowledge"
+  
+  integration: "submodule"
+  submodule_path: "./knowledge"
+  read_only: true
+  enforce_read_only: true
+
+chat_archive:
+  root_path: "./archive"
+  integration: "submodule"
+  submodule_path: "./archive"
+  read_only: true
+
+pipeline:
+  config_path: "./knowledge/pipelines/pipeline.yaml"
+  output_dir: "./output"
+  enforce_boundaries: true
+
+boundaries:
+  protected_paths:
+    - "./knowledge/blocks"
+    - "./knowledge/candidates"
+    - "./knowledge/INVARIANTS.md"
+    - "./knowledge/DECISIONS.md"
+    - "./knowledge/MAP.md"
+  allowed_output_paths:
+    - "./output"
+    - "./drafts"
+  validate_before_assembly: true

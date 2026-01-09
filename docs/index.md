@@ -33,6 +33,15 @@ Complete index of all Knowledge Operating System (KOS) documentation.
 - **[Cursor Workflow](Cursor%20Workflow.md)**  
   Detailed Cursor IDE workflow guide (in Russian). Step-by-step instructions for using KOS in Cursor.
 
+- **[Multi-Repository Setup](Multi-Repository-Setup.md)**  
+  Complete guide for setting up Knowledge OS with multi-repository architectures (dual-repo, submodule, monorepo).
+
+- **[Multi-Repository Examples](Multi-Repository-Examples.md)**  
+  Practical examples and workflows for multi-repository integrations.
+
+- **[How to Connect Repositories](How-to-Connect-Repositories.md)**  
+  Practical guide for setting up directory structure and connecting repositories.
+
 ---
 
 ## 🔗 Related Documentation
@@ -75,6 +84,8 @@ docs/
   Cursor Workflow.md    # Cursor IDE workflow (Russian)
   anti-patterns.md      # Anti-patterns checklist
   examples-session.md    # Real usage examples
+  Multi-Repository-Setup.md    # Multi-repo setup guide
+  Multi-Repository-Examples.md # Multi-repo examples
 
 ../
   COMMANDS.md           # Command specifications (single source of truth)
@@ -107,6 +118,7 @@ docs/
 - **Get project overview** → [README.md](../README.md)
 - **Check examples** → [Examples Session](examples-session.md)
 - **Review anti-patterns** → [Anti-Patterns](anti-patterns.md)
+- **Set up multi-repo** → [Multi-Repository Setup](Multi-Repository-Setup.md)
 
 ---
 
@@ -160,6 +172,14 @@ docs/
 **Supported sources:**
 - ChatGPT exports (`conversations.json`)
 - Telegram exports (JSON format)
+
+### Multi-Repository Architecture
+
+- [Multi-Repository Setup](Multi-Repository-Setup.md) — Complete setup guide for dual-repo, submodule, and monorepo architectures
+- [Multi-Repository Examples](Multi-Repository-Examples.md) — Practical examples and integration workflows
+- [Framework: Repository Split Architectures](../knowledge/blocks/frameworks/repository-split-architectures.md) — Architecture patterns
+- [Framework: Private Repository Structure](../knowledge/blocks/frameworks/private-repository-structure.md) — Required repositories
+- [Tools README](../tools/README.md) — Repository management and validation tools
 
 ---
 

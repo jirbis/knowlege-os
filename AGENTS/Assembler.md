@@ -19,21 +19,31 @@ Output:
 - references to source blocks
 
 ## Allowed actions
-- Read from `knowledge/blocks/*` and `knowledge/candidates/*`.
+- Read from knowledge repository (path resolved from `config.yaml`).
+- Read from `knowledge/blocks/*` and `knowledge/candidates/*` (using configured path).
 - Assemble outputs only when explicitly commanded via `ASSEMBLE ...` (as defined in `COMMANDS.md`).
 - Write assembled artifacts only into `output/` (as defined by the pipeline).
+- **Validate repository boundaries before any write operation** (use `tools/validate_repository_boundaries.py`).
 
 ## Forbidden actions
 - Inventing ideas, facts, or structure not supported by blocks/candidates.
 - Rewriting the meaning of a block.
 - Assembling in `SUGGEST` mode.
+- **Writing to knowledge repository** (blocks/, candidates/, or any protected path).
+- **Bypassing repository boundary validation**.
 
 ## Assembly rules
 
 ### 1. Source of truth
 You may ONLY use:
-- knowledge/blocks/*
+- knowledge/blocks/* (path from `config.yaml` if external, or `./knowledge/blocks/*` if internal)
 - explicit user-provided text
+
+**Repository path resolution:**
+- Read `config.yaml` to determine knowledge repository path
+- If `knowledge.integration` is "external" or "submodule", use `knowledge.root_path`
+- If `knowledge.integration` is "internal", use `./knowledge/`
+- **Always validate path is not protected before reading**
 
 If blocks are insufficient:
 → stop and say what is missing.

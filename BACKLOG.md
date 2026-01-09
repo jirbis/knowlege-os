@@ -39,25 +39,37 @@ This file tracks planned features and improvements for the Knowledge Operating S
 
 Based on the architectural frameworks documented in the knowledge blocks, implement support for multi-repository setups:
 
-#### Task 1: Repository Split Architecture Support
+#### Task 1: Repository Split Architecture Support ✅
+**Status:** Completed  
 **Priority:** High
 
 **Description:**
 Implement support for dual-repo, submodule, and monorepo split architectures as described in `repository-split-architectures.md`.
 
 **Requirements:**
-- Add configuration support for external knowledge repository paths
-- Implement read-only knowledge repository access patterns
-- Add validation to prevent writing to knowledge repository from pipeline
-- Support submodule-based integration
-- Document integration patterns for each architecture
+- ✅ Add configuration support for external knowledge repository paths (`config.yaml`)
+- ✅ Implement read-only knowledge repository access patterns
+- ✅ Add validation to prevent writing to knowledge repository from pipeline (`tools/validate_repository_boundaries.py`)
+- ✅ Support submodule-based integration (`tools/setup_dual_repo.py`)
+- ✅ Document integration patterns for each architecture (`docs/Multi-Repository-Setup.md`, `docs/Multi-Repository-Examples.md`)
 
 **Related:**
 - Framework: `knowledge/blocks/frameworks/repository-split-architectures.md`
 - Should respect boundaries: blocks and chapters never in same repo
 
-#### Task 2: Private Repository Structure Setup
-**Priority:** Medium
+**Files Created:**
+- `config.yaml` — Main configuration file
+- `config.templates/dual-repo.yaml` — Dual-repo template
+- `config.templates/submodule.yaml` — Submodule template
+- `config.templates/monorepo.yaml` — Monorepo template
+- `tools/validate_repository_boundaries.py` — Validation script
+- `tools/setup_dual_repo.py` — Dual-repo setup script
+- `docs/Multi-Repository-Setup.md` — Complete setup guide
+- `docs/Multi-Repository-Examples.md` — Integration examples
+
+#### Task 2: Private Repository Structure Setup ✅
+**Status:** Completed  
+**Priority:** High
 
 **Description:**
 Create tooling and documentation to support the 3-5 repository model described in `private-repository-structure.md`:
@@ -68,18 +80,25 @@ Create tooling and documentation to support the 3-5 repository model described i
 - Optional: knowledge-shared-templates
 
 **Requirements:**
-- Create repository initialization scripts
-- Add configuration templates for each repository type
-- Document setup process for multi-repo workflows
-- Create validation scripts to enforce repository boundaries
-- Add integration examples
+- ✅ Create repository initialization scripts (`tools/init_repository.py`)
+- ✅ Add configuration templates for each repository type (`config.templates/`)
+- ✅ Document setup process for multi-repo workflows (`docs/Multi-Repository-Setup.md`)
+- ✅ Create validation scripts to enforce repository boundaries (`tools/validate_repository_boundaries.py`)
+- ✅ Add integration examples (`docs/Multi-Repository-Examples.md`)
 
 **Related:**
 - Framework: `knowledge/blocks/frameworks/private-repository-structure.md`
 - Must enforce: production repo never writes to knowledge repo
 
+**Files Created:**
+- `tools/init_repository.py` — Repository initialization script
+- `tools/README.md` — Tools documentation
+- `docs/Multi-Repository-Setup.md` — Complete setup guide
+- `docs/Multi-Repository-Examples.md` — Integration examples
+- `AGENTS/Assembler.md` — Updated to use config.yaml for knowledge paths
+
 #### Task 3: Chat Archive Repository Integration
-**Priority:** Medium
+**Priority:** High
 
 **Description:**
 Implement the chat archive repository pattern from `export-chats.md` with proper separation from main knowledge-os repo.
@@ -125,7 +144,7 @@ Create connectors to Google Docs to enable:
 
 ### Telegram Export Tool
 **Status:** Planned  
-**Priority:** High
+**Priority:** Medium
 
 **Description:**
 Create `tools/ingest_telegram_export.py` to support Telegram exports alongside ChatGPT exports.
@@ -148,7 +167,7 @@ Create `tools/ingest_telegram_export.py` to support Telegram exports alongside C
 
 ### Multi-source Search Enhancement
 **Status:** Planned  
-**Priority:** Low
+**Priority:** Medium
 
 **Description:**
 Enhance search to filter by source type (ChatGPT, Telegram, Google Docs, etc.) and combine results intelligently.

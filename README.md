@@ -23,6 +23,14 @@ If an idea is not extracted into a block, it does not exist.
 
 ## Repository Structure
 
+KOS supports multiple repository architectures:
+- **Monorepo** — Single repository with strict boundaries (default)
+- **Dual-Repo** — Separate knowledge and pipeline repositories (recommended for privacy)
+- **Submodule** — Git submodule integration for versioned knowledge dependencies
+
+See [Multi-Repository Setup Guide](docs/Multi-Repository-Setup.md) for complete setup instructions.
+
+### Default Structure (Monorepo)
 
 ```
 knowledge/
@@ -52,7 +60,18 @@ blog/
 book/
 email/
 diary/
+
+config.yaml # Multi-repository configuration
 ```
+
+### Multi-Repository Structure
+
+For dual-repo or submodule setups:
+- `knowledge-os/` — Main system (pipeline, agents, output)
+- `knowledge-base/` — Semantic layer (blocks, candidates, invariants)
+- `knowledge-chat-archive/` — Raw conversation sources
+
+See [Multi-Repository Setup Guide](docs/Multi-Repository-Setup.md) for detailed setup.
 
 ---
 
@@ -202,6 +221,34 @@ This system exists to:
 
 You are not producing text.  
 You are building a long-term thinking engine.
+
+## Multi-Repository Support
+
+KOS supports splitting knowledge and pipeline into separate repositories for:
+- **Privacy** — Keep knowledge private while sharing pipeline
+- **Reusability** — Share knowledge across multiple projects
+- **Separation of Concerns** — Protect semantic layer from accidental modification
+
+**Quick Start:**
+```bash
+# Initialize repositories
+python3 tools/init_repository.py knowledge-os ./knowledge-os
+python3 tools/init_repository.py knowledge-base ./knowledge-base
+
+# Set up dual-repo configuration
+cd knowledge-os
+python3 tools/setup_dual_repo.py --knowledge-path ../knowledge-base/knowledge
+
+# Validate boundaries
+python3 tools/validate_repository_boundaries.py
+```
+
+**Documentation:**
+- [Multi-Repository Setup Guide](docs/Multi-Repository-Setup.md) — Complete setup guide
+- [Multi-Repository Examples](docs/Multi-Repository-Examples.md) — Practical examples
+- [Tools Documentation](tools/README.md) — Repository management tools
+
+---
 
 ## One Rule to Remember
 

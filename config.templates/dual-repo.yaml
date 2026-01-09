@@ -1,0 +1,38 @@
+# Dual-Repository Configuration Template
+# Architecture: Two separate repositories
+# - knowledge-os: main system with pipeline
+# - knowledge-base: semantic layer (external)
+
+architecture: "dual-repo"
+
+knowledge:
+  # Path to external knowledge-base repository
+  # Example: "../knowledge-base/knowledge" (relative)
+  # Example: "/absolute/path/to/knowledge-base/knowledge" (absolute)
+  root_path: "../knowledge-base/knowledge"
+  
+  integration: "external"
+  read_only: true
+  enforce_read_only: true
+
+chat_archive:
+  root_path: "../knowledge-chat-archive"
+  integration: "external"
+  read_only: true
+
+pipeline:
+  config_path: "./knowledge/pipelines/pipeline.yaml"
+  output_dir: "./output"
+  enforce_boundaries: true
+
+boundaries:
+  protected_paths:
+    - "./knowledge/blocks"
+    - "./knowledge/candidates"
+    - "./knowledge/INVARIANTS.md"
+    - "./knowledge/DECISIONS.md"
+    - "./knowledge/MAP.md"
+  allowed_output_paths:
+    - "./output"
+    - "./drafts"
+  validate_before_assembly: true
